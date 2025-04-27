@@ -5,6 +5,7 @@ import {
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import { Poppins, Playfair_Display } from "next/font/google";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   weight: ["300", "400", "600"],
@@ -33,6 +34,7 @@ export default function RootLayout({
           <body>
             <Header />
             <main>{children}</main>
+            <Footer/>
           </body>
       </html>
     </ClerkProvider>
