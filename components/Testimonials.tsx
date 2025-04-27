@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Testimonials({ testimonials }: { testimonials: { quote: string; name: string; photo: string }[] }) {
   return (
@@ -15,9 +16,16 @@ export default function Testimonials({ testimonials }: { testimonials: { quote: 
             viewport={{ once: true }}
             className="bg-white p-6 rounded shadow"
           >
-            <p className="text-textDark mb-4">"{testimonial.quote}"</p>
+            <p className="text-textDark mb-4">&quot;{testimonial.quote}$quot;</p>
             <div className="flex items-center">
-              <img src={testimonial.photo} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4" />
+              <Image
+                src={testimonial.photo}
+                alt={testimonial.name}
+                width={48}
+                height={48}
+                className="w-12 h-12 rounded-full mr-4"
+                priority
+              />
               <span className="font-medium">{testimonial.name}</span>
             </div>
           </motion.div>
