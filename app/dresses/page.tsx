@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import { Product } from '@/types';
+//import { Product } from '@/types';
 import DressesHero from '@/components/DressesHero';
 import SubcategoryFilter from '@/components/SubcategoryFilter';
 import ProductGrid from '@/components/ProductGrid';
