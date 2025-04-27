@@ -1,28 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs'
-import "./globals.css";
+  ClerkProvider
+} from "@clerk/nextjs";
+import "@/styles/globals.css";
+import Header from "@/components/Header";
+import { Poppins, Playfair_Display } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  weight: ["300", "400", "600"],
   subsets: ["latin"],
+  variable: "--font-poppins",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  weight: ["400", "700"],
   subsets: ["latin"],
+  variable: "--font-playfair",
 });
 
-export const metadata : Metadata = {
-  title: 'Tibeb - Ethiopian Cultural Dress',
-  description: 'Discover traditional Habesha clothing at Tibeb.',
+export const metadata: Metadata = {
+  title: "Tibeb - Ethiopian Cultural Dress",
+  description: "Discover traditional Habesha clothing at Tibeb.",
 };
 export default function RootLayout({
   children,
@@ -31,20 +29,12 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <header className="flex justify-end items-center p-4 gap-4 h-16">
-          <SignedOut>
-            <SignInButton />
-            <SignUpButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </header>
-        {children}
-      </body>
-    </html>
-  </ClerkProvider>
+      <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
+          <body>
+            <Header />
+            <main>{children}</main>
+          </body>
+      </html>
+    </ClerkProvider>
   );
 }
