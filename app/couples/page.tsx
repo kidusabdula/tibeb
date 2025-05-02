@@ -55,7 +55,6 @@ export default async function CouplesPage() {
     { title: 'Best Sellers', products: bestSellers || [] },
   ];
 
-  // Fetch customer reviews for couples
   const { data: reviews } = await supabase
     .from('reviews')
     .select('quote, name, photo')
