@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Product } from '@/types';
-import { useState } from 'react';
+import { useCart } from './CartContext';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -10,27 +10,25 @@ const cardVariants = {
 };
 
 export default function ProductGrid({ initialProducts }: { initialProducts: Product[] }) {
+  const { addToCart } = useCart();
 
-const [products, setProducts] = useState<Product[]>(initialProducts);
+  const handleAddToCart = async (product: Product) => {
+    const cartItem: CartItem = {
+      id: `cart-${Date.now()}`, // Unique ID for the cart item
+      product_id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+    };
 
-  const handleAddToCart = async (productId: string) => {
-    const response = await fetch('/api/cart', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product_id: productId, quantity: 1 }),
-    });
-
-    if (response.ok) {
-      alert('Added to cart!');
-    } else {
-      alert('Failed to add to cart.');
-    }
+    await addToCart(cartItem);
   };
 
   return (
     <section id="products" className="py-12 px-6 bg-secondaryBg">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        {products.map((product) => (
+        {initialProducts.map((product) => (
           <motion.div
             key={product.id}
             variants={cardVariants}
@@ -47,7 +45,7 @@ const [products, setProducts] = useState<Product[]>(initialProducts);
               <p className="text-highlightRed text-sm">Sale: ETB {product.sale_price}</p>
             )}
             <button
-              onClick={() => handleAddToCart(product.id)}
+              onClick={() => handleAddToCart(product)}
               className="mt-2 bg-accentGold text-primaryBg px-4 py-2 rounded hover:bg-highlightRed transition"
             >
               Add to Cart
