@@ -19,7 +19,7 @@ export default function DressesHero() {
       {/* Video for desktop */}
       <div className="hidden md:block absolute inset-0">
         <video autoPlay loop muted className="w-full h-full object-cover">
-          <source src="https://your-supabase-project.supabase.co/storage/v1/object/public/videos/dresses-hero-video.mp4" type="video/mp4" />
+          <source src="https://eftwxcqecemhuvobwvtb.supabase.co/storage/v1/object/public/videos//hero-video.mp4" type="video/mp4" />
         </video>
       </div>
       {/* Image for mobile */}
