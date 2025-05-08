@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useCart } from './CartContext';
 import CartPopup from './CartPopup';
@@ -11,7 +11,18 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isDressDropdownOpen, setIsDressDropdownOpen] = useState(false);
+  const [subcategories, setSubcategories] = useState<string[]>([]);
   const { cartItems, setItemAdded } = useCart();
+
+  useEffect(() => {
+    async function fetchSubcategories() {
+      const res = await fetch('/api/subcategories?dresses');
+      const data = await res.json();
+      setSubcategories(data);
+    }
+    fetchSubcategories();
+  }, []);
 
   return (
     <header className="w-full bg-secondaryBg">
@@ -95,14 +106,34 @@ export default function Header() {
 
         {/* Navigation (Centered Below Logo) */}
         <nav className="hidden md:flex justify-center space-x-6 text-textDark font-medium mt-4">
-          <Link href="/dresses" className="hover:text-accentGold transition">
-            DRESSES
-          </Link>
+          <div className="relative">
+            <button
+              onClick={() => setIsDressDropdownOpen(!isDressDropdownOpen)}
+              className="hover:text-accentGold transition"
+              aria-label="Dresses menu"
+            >
+              DRESSES
+            </button>
+            {isDressDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-48 bg-secondaryBg shadow-lg rounded-md z-10">
+                {subcategories.map((subcategory) => (
+                  <Link
+                    key={subcategory}
+                    href={`/dresses?subcategory=${subcategory}`}
+                    className="block px-4 py-2 text-sm hover:bg-primaryBg hover:text-accentGold transition"
+                    onClick={() => setIsDressDropdownOpen(false)}
+                  >
+                    {subcategory.replace('-', ' ').toUpperCase()}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <Link href="/mens" className="hover:text-accentGold transition">
-            MEN&apos;S
+            MEN'S
           </Link>
           <Link href="/couples" className="hover:text-accentGold transition">
-            COUPLES&apos;
+            COUPLES'
           </Link>
           <Link href="/about" className="hover:text-accentGold transition">
             ABOUT US
@@ -129,26 +160,45 @@ export default function Header() {
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
         <nav className="md:hidden bg-primaryBg text-secondaryBg py-4 px-6">
-          <Link
-            href="/dresses"
-            className="block py-2 hover:text-accentGold transition"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            DRESSES
-          </Link>
+          <div className="relative">
+            <button
+              onClick={() => setIsDressDropdownOpen(!isDressDropdownOpen)}
+              className="block py-2 hover:text-accentGold transition w-full text-left"
+              aria-label="Dresses menu"
+            >
+              DRESSES
+            </button>
+            {isDressDropdownOpen && (
+              <div className="mt-2">
+                {subcategories.map((subcategory) => (
+                  <Link
+                    key={subcategory}
+                    href={`/dresses?subcategory=${subcategory}`}
+                    className="block px-4 py-2 text-sm hover:bg-secondaryBg hover:text-accentGold transition"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsDressDropdownOpen(false);
+                    }}
+                  >
+                    {subcategory.replace('-', ' ').toUpperCase()}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <Link
             href="/mens"
             className="block py-2 hover:text-accentGold transition"
             onClick={() => setIsMenuOpen(false)}
           >
-            MEN&apos;S
+            MEN'S
           </Link>
           <Link
             href="/couples"
             className="block py-2 hover:text-accentGold transition"
             onClick={() => setIsMenuOpen(false)}
           >
-            COUPLES&apos;
+            COUPLES'
           </Link>
           <Link
             href="/about"
