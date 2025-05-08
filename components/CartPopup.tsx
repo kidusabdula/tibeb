@@ -17,10 +17,9 @@ const itemVariants = {
 };
 
 export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const { cartItems, removeFromCart, updateQuantity, itemAdded, setItemAdded } = useCart();
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
 
   const handleClose = () => {
-    setItemAdded(false);
     onClose();
   };
 
@@ -30,7 +29,6 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
 
   return (
     <>
-      {/* Overlay Background */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -43,7 +41,6 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
         )}
       </AnimatePresence>
 
-      {/* Cart Popup */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -54,7 +51,6 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
             className="fixed top-0 right-0 h-full w-full sm:w-96 bg-secondaryBg z-50 shadow-lg overflow-y-auto"
           >
             <div className="p-6">
-              {/* Header */}
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-playfair text-primaryBg">Your Cart</h2>
                 <button onClick={handleClose} className="text-primaryBg text-2xl">
@@ -62,7 +58,6 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
                 </button>
               </div>
 
-              {/* Cart Items */}
               {cartItems.length === 0 ? (
                 <div className="text-center py-12">
                   <h3 className="text-lg font-medium text-textDark mb-4">Your cart is empty</h3>
@@ -77,7 +72,6 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
                 </div>
               ) : (
                 <>
-                  {/* List of Items */}
                   <div className="space-y-4 mb-6">
                     {cartItems.map((item) => (
                       <motion.div
@@ -124,7 +118,6 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
                     ))}
                   </div>
 
-                  {/* Subtotal and Actions */}
                   <div className="border-t border-primaryBg pt-4">
                     <div className="flex justify-between items-center mb-4">
                       <span className="text-lg font-medium text-textDark">Subtotal:</span>
@@ -145,7 +138,6 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
                     </button>
                   </div>
 
-                  {/* Additional Info */}
                   <div className="mt-6 text-center text-sm text-textDark">
                     <p className="mb-2">Free shipping on orders over ETB 5000 within Ethiopia.</p>
                     <p>30-day return policy on unworn items.</p>
