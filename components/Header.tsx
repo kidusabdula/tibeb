@@ -3,11 +3,15 @@ import Link from 'next/link';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useCart } from './CartContext';
+import CartPopup from './CartPopup';
 
 export default function Header() {
   const { isSignedIn } = useUser();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { cartItems, setItemAdded } = useCart();
 
   return (
     <header className="w-full bg-secondaryBg">
@@ -64,9 +68,18 @@ export default function Header() {
             )}
 
             {/* Cart */}
-            <Link href="/cart" aria-label="Cart">
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative"
+              aria-label="Cart"
+            >
               <Image src="/cart-icon.svg" alt="Cart" width={20} height={20} />
-            </Link>
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-highlightRed text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
+            </button>
 
             {/* Hamburger Menu (Mobile) */}
             <button
@@ -86,10 +99,10 @@ export default function Header() {
             DRESSES
           </Link>
           <Link href="/mens" className="hover:text-accentGold transition">
-            MEN'S
+            MEN&apos;S
           </Link>
           <Link href="/couples" className="hover:text-accentGold transition">
-            COUPLES'
+            COUPLES&apos;
           </Link>
           <Link href="/about" className="hover:text-accentGold transition">
             ABOUT US
@@ -128,14 +141,14 @@ export default function Header() {
             className="block py-2 hover:text-accentGold transition"
             onClick={() => setIsMenuOpen(false)}
           >
-            MEN'S
+            MEN&apos;S
           </Link>
           <Link
             href="/couples"
             className="block py-2 hover:text-accentGold transition"
             onClick={() => setIsMenuOpen(false)}
           >
-            COUPLES'
+            COUPLES&apos;
           </Link>
           <Link
             href="/about"
@@ -153,6 +166,15 @@ export default function Header() {
           </Link>
         </nav>
       )}
+
+      {/* Cart Popup */}
+      <CartPopup
+        isOpen={isCartOpen}
+        onClose={() => {
+          setIsCartOpen(false);
+          setItemAdded(false);
+        }}
+      />
     </header>
   );
 }
