@@ -30,7 +30,6 @@ export default function Header() {
       <div className="py-4 px-6">
         {/* Top Row: Language, Logo, Search, and Icons */}
         <div className="flex items-center justify-between">
-          {/* Left: Language/Currency */}
           <div className="flex items-center space-x-2 text-sm text-textDark">
             <Image src="/flag-ethiopia.svg" alt="Ethiopia Flag" width={16} height={16} />
             <span>ENGLISH</span>
@@ -47,7 +46,6 @@ export default function Header() {
 
           {/* Right: Search and Icons */}
           <div className="flex items-center space-x-4">
-            {/* Search Bar (Inline on Desktop, Toggle on Mobile) */}
             <div className="hidden md:block">
               <input
                 type="text"
