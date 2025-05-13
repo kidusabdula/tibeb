@@ -30,12 +30,12 @@ export default function Header() {
       <div className="py-4 px-6">
         {/* Top Row: Language, Logo, Search, and Icons */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 text-sm text-textDark">
+          {/* <div className="flex items-center space-x-2 text-sm text-textDark">
             <Image src="/flag-ethiopia.svg" alt="Ethiopia Flag" width={16} height={16} />
             <span>ENGLISH</span>
             <span>|</span>
             <span>ETB</span>
-          </div>
+          </div> */}
 
           {/* Center: Logo */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
