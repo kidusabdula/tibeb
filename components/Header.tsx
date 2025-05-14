@@ -45,7 +45,7 @@ export default function Header() {
           </div>
 
           {/* Right: Search and Icons */}
-          <div className="flex items-center space-x-4">
+          {/* <div className="flex items-center space-x-4">
             <div className="hidden md:block">
               <input
                 type="text"
@@ -53,7 +53,7 @@ export default function Header() {
                 className="p-1 border rounded text-textDark text-sm w-32"
                 aria-label="Search products"
               />
-            </div>
+            </div> */}
             <button
               className="md:hidden"
               onClick={() => setIsSearchOpen(!isSearchOpen)}
