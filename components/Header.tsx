@@ -16,11 +16,21 @@ export default function Header() {
   const { cartItems, setItemAdded } = useCart();
 
   useEffect(() => {
+    console.log('useEffect triggered'); // This should appear immediately
+    
     async function fetchSubcategories() {
-      const res = await fetch('/api/subcategories?dresses');
-      const data = await res.json();
-      setSubcategories(data);
+      console.log('fetchSubcategories called'); // Should appear right after
+      try {
+        const res = await fetch('/api/subcategories');
+        console.log('API response status:', res.status);
+        const data = await res.json();
+        console.log('API response data:', data);
+        setSubcategories(data);
+      } catch (error) {
+        console.error('Error fetching subcategories:', error);
+      }
     }
+    
     fetchSubcategories();
   }, []);
 
@@ -30,12 +40,13 @@ export default function Header() {
       <div className="py-4 px-6">
         {/* Top Row: Language, Logo, Search, and Icons */}
         <div className="flex items-center justify-between">
-          {/* <div className="flex items-center space-x-2 text-sm text-textDark">
+          {/* Left: Language/Currency */}
+          <div className="flex items-center space-x-2 text-sm text-textDark">
             <Image src="/flag-ethiopia.svg" alt="Ethiopia Flag" width={16} height={16} />
             <span>ENGLISH</span>
             <span>|</span>
             <span>ETB</span>
-          </div> */}
+          </div>
 
           {/* Center: Logo */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
@@ -45,7 +56,8 @@ export default function Header() {
           </div>
 
           {/* Right: Search and Icons */}
-          {/* <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4">
+            {/* Search Bar (Inline on Desktop, Toggle on Mobile) */}
             <div className="hidden md:block">
               <input
                 type="text"
@@ -53,7 +65,7 @@ export default function Header() {
                 className="p-1 border rounded text-textDark text-sm w-32"
                 aria-label="Search products"
               />
-            </div> */}
+            </div>
             <button
               className="md:hidden"
               onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -109,6 +121,7 @@ export default function Header() {
               onClick={() => setIsDressDropdownOpen(!isDressDropdownOpen)}
               className="hover:text-accentGold transition"
               aria-label="Dresses menu"
+              aria-expanded={isDressDropdownOpen}
             >
               DRESSES
             </button>
@@ -163,6 +176,7 @@ export default function Header() {
               onClick={() => setIsDressDropdownOpen(!isDressDropdownOpen)}
               className="block py-2 hover:text-accentGold transition w-full text-left"
               aria-label="Dresses menu"
+              aria-expanded={isDressDropdownOpen}
             >
               DRESSES
             </button>

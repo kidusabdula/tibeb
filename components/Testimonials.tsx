@@ -16,7 +16,7 @@ export default function Testimonials({ testimonials }: { testimonials: { quote: 
             viewport={{ once: true }}
             className="bg-white p-6 rounded shadow"
           >
-            <p className="text-textDark mb-4">&quot;{testimonial.quote}$quot;</p>
+            <p className="text-textDark mb-4">&quot;{testimonial.quote}&quot;</p>
             <div className="flex items-center">
               <Image
                 src={testimonial.photo}

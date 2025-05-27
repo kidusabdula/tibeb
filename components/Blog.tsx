@@ -17,7 +17,7 @@ export default function Blog({ posts }: { posts: { title: string; excerpt: strin
               className="w-full h-48 object-cover mb-4"
               priority
             />
-            <h3 className="text-xl font-medium mb-2">{post.title}</h3>
+            <h3 className="text-xl font-bold mb-2 text-textDark">{post.title}</h3>
             <p className="text-textDark mb-4">{post.excerpt}</p>
             <Link href={`/blog/${index}`} className="text-accentGold hover:underline">
               Read More

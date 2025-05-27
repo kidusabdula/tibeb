@@ -15,16 +15,23 @@ export default async function HomePage() {
     .limit(4);
 
   // Fetch categories with representative images
-  const categoriesData = await Promise.all(
-    ['dresses', 'mens', 'couples'].map(async (cat) => {
-      const { data } = await supabase
-        .from('products')
-        .select('image')
-        .eq('category', cat)
-        .limit(1);
-      return { name: cat, image: data?.[0]?.image || '/default-category.jpg' };
-    })
-  );
+  const categoriesData = [
+    { 
+      name: 'dresses', 
+      image: '/habesha-dress.jpg', // Update with your image path
+      description: 'Traditional Habesha dresses for all occasions'
+    },
+    { 
+      name: 'mens', 
+      image: '/habesha-mens.jpg', // Update with your image path
+      description: 'Elegant menswear collections'
+    },
+    { 
+      name: 'couples', 
+      image: '/habesha-couples.jpg', // Update with your image path
+      description: 'Matching outfits for couples'
+    }
+  ];
 
   // Mock testimonials and blog posts (replace with real data as needed)
   const testimonials = [
