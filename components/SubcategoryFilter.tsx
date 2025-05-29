@@ -2,14 +2,15 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Product } from '@/types';
+import ProductGrid from './ProductGrid';
 
 const buttonVariants = {
   hover: { scale: 1.05, backgroundColor: '#D4AF37', color: '#1C2526', transition: { duration: 0.2 } },
   active: { backgroundColor: '#D4AF37', color: '#1C2526' },
 };
 
-export default function SubcategoryFilter({ subcategories }: { subcategories: string[] }) {
-  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+export default function SubcategoryFilter({ subcategories, initialSubcategory }: { subcategories: string[]; initialSubcategory?: string }) {
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(initialSubcategory || null);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function SubcategoryFilter({ subcategories }: { subcategories: st
       const query = `/api/products?category=dresses${selectedSubcategory ? `&subcategory=${selectedSubcategory}` : ''}`;
       const response = await fetch(query);
       const data = await response.json();
-      setProducts(data);
+      setProducts(data.data || []);
     };
     fetchProducts();
   }, [selectedSubcategory]);
@@ -48,6 +49,7 @@ export default function SubcategoryFilter({ subcategories }: { subcategories: st
           ALL
         </motion.button>
       </div>
+      <ProductGrid initialProducts={products} />
     </section>
   );
 }

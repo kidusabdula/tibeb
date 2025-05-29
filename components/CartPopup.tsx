@@ -81,6 +81,7 @@ export default function CartPopup({ isOpen, onClose }: { isOpen: boolean; onClos
                         animate="visible"
                         whileHover="hover"
                         className="flex items-center gap-4 p-4 bg-white rounded shadow"
+                        data-testid="cart-items"
                       >
                         <Image
                           src={item.image}

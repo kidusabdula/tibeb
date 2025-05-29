@@ -24,7 +24,7 @@ export default function DressesHero() {
       </div>
       {/* Image for mobile */}
       <div className="md:hidden absolute inset-0">
-        <Image src="/dresses-hero-image.jpg" alt="Dresses Hero" layout="fill" objectFit="cover" priority />
+        <Image src="/hero-image.jpg" alt="Dresses Hero" layout="fill" objectFit="cover" priority />
       </div>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>

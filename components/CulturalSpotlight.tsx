@@ -30,10 +30,10 @@ export default function CulturalSpotlight() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img src="/cultural-image1.jpg" alt="Habesha Dress 1" className="w-full h-48 object-cover rounded" />
-            <img src="/cultural-image2.jpg" alt="Habesha Dress 2" className="w-full h-48 object-cover rounded" />
-            <img src="/cultural-image3.jpg" alt="Habesha Dress 3" className="w-full h-48 object-cover rounded" />
-            <img src="/cultural-image4.jpg" alt="Habesha Dress 4" className="w-full h-48 object-cover rounded" />
+            <img src="/blog1.jpg" alt="Habesha Dress 1" className="w-full h-48 object-cover rounded" />
+            <img src="/blog2.jpg" alt="Habesha Dress 2" className="w-full h-48 object-cover rounded" />
+            <img src="/habesha-couples.jpg" alt="Habesha Dress 3" className="w-full h-48 object-cover rounded" />
+            <img src="/habesha-dress.jpg" alt="Habesha Dress 4" className="w-full h-48 object-cover rounded" />
           </div>
         </div>
       </motion.div>

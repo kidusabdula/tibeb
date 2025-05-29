@@ -25,7 +25,7 @@ export default function StyleGuide() {
                 Habesha dresses pair beautifully with gold jewelry, reflecting the rich cultural symbolism of gold in Ethiopian traditions. Opt for statement necklaces, earrings, or bangles to complement the intricate embroidery of your dress.
               </p>
             </div>
-            <img src="/style-guide1.jpg" alt="Gold Jewelry" className="w-full h-48 object-cover rounded" />
+            <img src="/selam.jpg" alt="Gold Jewelry" className="w-full h-48 object-cover rounded" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="md:order-last">
@@ -34,7 +34,7 @@ export default function StyleGuide() {
                 A Netela, a traditional Ethiopian shawl, adds elegance and authenticity to your look. Drape it over your shoulders or wrap it around your head for a regal appearance, especially for formal events like weddings.
               </p>
             </div>
-            <img src="/style-guide2.jpg" alt="Netela" className="w-full h-48 object-cover rounded" />
+            <img src="/habesha-dress.jpg" alt="Netela" className="w-full h-48 object-cover rounded" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -43,7 +43,7 @@ export default function StyleGuide() {
                 Complete your look with traditional Ethiopian sandals or modern heels in neutral tones like gold or white. For a more casual look, opt for simple flats that let the dress take center stage.
               </p>
             </div>
-            <img src="/style-guide3.jpg" alt="Footwear" className="w-full h-48 object-cover rounded" />
+            <img src="/blog3.jpg" alt="Footwear" className="w-full h-48 object-cover rounded" />
           </div>
         </div>
       </motion.div>
