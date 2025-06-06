@@ -182,24 +182,24 @@ INSERT INTO products (
 );
 
 -- Product 10: Ethiopian Essence Habesha Kemis Simplistic Menen Fabric Habesha Dress
-INSERT INTO products (
-  name, price, image, category, subcategory, design_type, 
-  is_new_arrival, is_sale, sale_price, stock, description, created_at, updated_at
-) VALUES (
-  'Ethiopian Essence Habesha Kemis Simplistic Menen Fabric Habesha Dress',
-  299.99,
-  'https://eftwxcqecemhuvobwvtb.supabase.co/storage/v1/object/sign/product-images/simple-dress4.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzM0NmJjMzEzLWQwMjItNDU3My1hY2EzLThjNTFmMDRlMDI1ZSJ9.eyJ1cmwiOiJwcm9kdWN0LWltYWdlcy9zaW1wbGUtZHJlc3M0LnBuZyIsImlhdCI6MTc0NjcyMDY1OSwiZXhwIjoxNzc4MjU2NjU5fQ.XvPNjP3BzA3wckCnGgAKZSIZdEbc7xOWr4n9pTWB1m4',
-  'Dresses',
-  'Simple Dresses',
-  'Traditional',
-  TRUE,
-  FALSE,
-  NULL,
-  7,
-  'A simplistic Habesha Kemis made from Menen fabric.',
-  '2025-05-08T12:00:00Z',
-  '2025-05-08T12:00:00Z'
-);
+-- INSERT INTO products (
+--   name, price, image, category, subcategory, design_type, 
+--   is_new_arrival, is_sale, sale_price, stock, description, created_at, updated_at
+-- ) VALUES (
+--   'Ethiopian Essence Habesha Kemis Simplistic Menen Fabric Habesha Dress',
+--   299.99,
+--   'https://eftwxcqecemhuvobwvtb.supabase.co/storage/v1/object/sign/product-images/simple-dress4.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5XzM0NmJjMzEzLWQwMjItNDU3My1hY2EzLThjNTFmMDRlMDI1ZSJ9.eyJ1cmwiOiJwcm9kdWN0LWltYWdlcy9zaW1wbGUtZHJlc3M0LnBuZyIsImlhdCI6MTc0NjcyMDY1OSwiZXhwIjoxNzc4MjU2NjU5fQ.XvPNjP3BzA3wckCnGgAKZSIZdEbc7xOWr4n9pTWB1m4',
+--   'Dresses',
+--   'Simple Dresses',
+--   'Traditional',
+--   TRUE,
+--   FALSE,
+--   NULL,
+--   7,
+--   'A simplistic Habesha Kemis made from Menen fabric.',
+--   '2025-05-08T12:00:00Z',
+--   '2025-05-08T12:00:00Z'
+-- );
 
 -- Product 11: Vibrant Red Tilf Design Habesha Dress Red Design Habesha Kemis
 INSERT INTO products (
